@@ -1,12 +1,14 @@
 # SMOO multi ban application
 
-This application will ban a user from a list of twitch streamers.
+This application will ban a user from a list of Twitch streamers.
 
 ## Usage
 
-It uses a discord bot as interface.
+This application uses a discord bot as interface.
+
 Every streamer that wants to be included has to to `/regiser`.
-This will provide a personalised url for them to authorise the application to ban users in their channel.
+A personalised url will be given for the streamer to authorise the application to ban users in their channel.
+
 The bot then provides following commands:
 
 -   multiban <username> | Takes a username and bans them in the authorised and enabled channels
