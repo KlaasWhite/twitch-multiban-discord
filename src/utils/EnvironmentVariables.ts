@@ -6,7 +6,6 @@ export default class EnvironmentVariables {
 
     static DISCORD_BOT_TOKEN = "";
     static DISCORD_SERVER = "";
-    static DISCORD_CHANNEL = "";
     static DISCORD_CLIENT_ID = "";
 
     static TWITCH_APPLICATION_CLIENT_ID = "";
@@ -35,11 +34,6 @@ export default class EnvironmentVariables {
         }
         if (process.env.DISCORD_SERVER && process.env.DISCORD_SERVER !== "") {
             this.DISCORD_SERVER = process.env.DISCORD_SERVER as string;
-        } else {
-            return false;
-        }
-        if (process.env.DISCORD_CHANNEL && process.env.DISCORD_CHANNEL !== "") {
-            this.DISCORD_CHANNEL = process.env.DISCORD_CHANNEL as string;
         } else {
             return false;
         }

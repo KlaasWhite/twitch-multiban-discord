@@ -91,7 +91,7 @@ out
 .nuxt
 dist
 
-config
+config/
 
 # Gatsby files
 .cache/
@@ -132,3 +132,4 @@ config
 .pnp.*
 
 .gcloudignore
+.vscode

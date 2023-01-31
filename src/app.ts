@@ -1,5 +1,5 @@
 import express from "express";
-import DiscordHelper from "./DiscordHelper";
+import DiscordHelper from "./discord/DiscordHelper";
 import authenticateConfirm from "./requests/authenticate/confirm";
 import authenticateRequest from "./requests/authenticate/request";
 import EnvironmentVariables from "./utils/EnvironmentVariables";
@@ -24,24 +24,34 @@ if (!started) {
 }
 
 app.get("/authenticate/request", (req, res) => {
-    authenticateRequest(req, res);
+    try {
+        authenticateRequest(req, res);
+    } catch (error) {
+        console.error("Error in request endpoint: " + error);
+    }
 });
 
 app.get("/authenticate/confirm", (req, res) => {
-    authenticateConfirm(req, res);
+    try {
+        authenticateConfirm(req, res);
+    } catch (error) {
+        console.error("Error in confirm endpoint: " + error);
+    }
 });
 
-const initalise = async () => {
+const initialise = async () => {
     try {
-        startupRoutine();
+        console.log("============================================");
+        console.log("Initialising app");
+        await startupRoutine();
         await DiscordHelper.initialiseDiscord();
+        app.listen(PORT, () => {
+            console.log("HTTP server listening on port " + PORT);
+            console.log("============================================");
+        });
     } catch (e) {
-        console.log(e);
+        console.log("Error in initialise: " + e);
     }
 };
 
-initalise();
-
-app.listen(PORT, () => {
-    console.log("listening on port " + PORT);
-});
+initialise();

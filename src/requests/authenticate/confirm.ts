@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import UserData from "../../UserData";
+import StreamerData from "../../configClasses/StreamerData";
 import TwitchAuthorisation from "../../twitch/TwitchAuthorisation";
 
 const authenticateConfirm = (req: Request, res: Response) => {
@@ -10,7 +10,7 @@ const authenticateConfirm = (req: Request, res: Response) => {
     if (code) {
         let twitchState = state.substring(0, 20);
         let discordId = state.substring(20);
-        let user = UserData.getUser(discordId);
+        let user = StreamerData.getStreamer(discordId);
         if (user && user.twitchState === twitchState) {
             res.send("Twitch has been authorised, you can close this tab");
             user.auth.twitchCode = code;
