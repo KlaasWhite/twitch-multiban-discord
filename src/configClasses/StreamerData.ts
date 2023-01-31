@@ -25,7 +25,7 @@ export default class StreamerData {
 
     public static loadConfig(): Promise<void> {
         return new Promise((resolve, reject) => {
-            fs.readFile("./config/userData.json", (err, data) => {
+            fs.readFile("./config/StreamerData.json", (err, data) => {
                 if (err) {
                     console.log(err);
                     return;
@@ -47,7 +47,7 @@ export default class StreamerData {
             twitchMapping: Array.from(this.twitchMapping.entries()),
         };
         fs.writeFileSync(
-            "./config/userData.json",
+            "./config/StreamerData.json",
             JSON.stringify(serialisedConfig)
         );
     }

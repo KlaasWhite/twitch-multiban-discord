@@ -11,13 +11,13 @@ const checkForNonExistance = () => {
     if (!fs.existsSync("./config")) {
         fs.mkdirSync("./config");
     }
-    if (!fs.existsSync("./config/userData.json")) {
+    if (!fs.existsSync("./config/StreamerData.json")) {
         let serialisedConfig = {
             users: Array.from(startupConfig.users.entries()),
             twitchMapping: Array.from(startupConfig.twitchMapping.entries()),
         };
         fs.writeFileSync(
-            "./config/userData.json",
+            "./config/StreamerData.json",
             JSON.stringify(serialisedConfig)
         );
     }
